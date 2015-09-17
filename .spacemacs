@@ -11,7 +11,7 @@
  dotspacemacs-configuration-layer-path '()
  ;; List of configuration layers to load. If it is the symbol `all' instead
  ;; of a list then all discovered layers will be installed.
- dotspacemacs-configuration-layers '(all)
+ dotspacemacs-configuration-layers '(all haskell)
  ;; A list of packages and/or extensions that will not be install and loaded.
  dotspacemacs-excluded-packages '()
  ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -104,7 +104,21 @@ dotspacemacs-configuration-layers '((git :variables
   "User initialization for Spacemacs. This function is called at the very
  startup."
   (global-linum-mode) ; Show line numbers by default
+  (defun espeak-region (start end)
+    "execute region in an inferior shell"
+    (interactive "r")
+    (shell-command
+     (concat "espeak \"" (buffer-substring-no-properties start end) "\"")))
+  (defun show-tabs () "" (interactive)
+    (standard-display-ascii ?\t "!TAB"))
+
+  (defun hide-tabs () "" (interactive)
+    (standard-display-ascii ?\t "\t"))
+
   )
+
+
+
 
 (defun dotspacemacs/config ()
   "This is were you can ultimately override default Spacemacs configuration.
